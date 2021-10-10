@@ -23,39 +23,41 @@ const App = () => {
 
   const checkIsWinner = () => {
     // Check for winner
-    if (itemArray[0] == itemArray[1] &&
-      itemArray[0] == itemArray[2] && 
+    if (itemArray[0] === itemArray[1] &&
+      itemArray[0] === itemArray[2] && 
       itemArray[0] !== "empty") {
         setWinMessage(`${itemArray[0]} won`);
-    } else if (itemArray[3] == itemArray[4] &&
-      itemArray[3] == itemArray[4] && 
+    } else if (itemArray[3] === itemArray[4] &&
+      itemArray[3] === itemArray[5] && 
       itemArray[3] !== "empty") {
         setWinMessage(`${itemArray[3]} won`)
-    } else if (itemArray[6] == itemArray[7] &&
-      itemArray[6] == itemArray[8] && 
+    } else if (itemArray[6] === itemArray[7] &&
+      itemArray[6] === itemArray[8] && 
       itemArray[6] !== "empty") {
         setWinMessage(`${itemArray[6]} won`)
-    } else if (itemArray[0] == itemArray[3] &&
-      itemArray[0] == itemArray[6] && 
+    } else if (itemArray[0] === itemArray[3] &&
+      itemArray[0] === itemArray[6] && 
       itemArray[0] !== "empty") {
         setWinMessage(`${itemArray[0]} won`)
-    } else if (itemArray[1] == itemArray[4] &&
-      itemArray[1] == itemArray[7] && 
+    } else if (itemArray[1] === itemArray[4] &&
+      itemArray[1] === itemArray[7] && 
       itemArray[1] !== "empty") {
         setWinMessage(`${itemArray[1]} won`)
-    } else if (itemArray[2] == itemArray[5] &&
-      itemArray[2] == itemArray[8] && 
+    } else if (itemArray[2] === itemArray[5] &&
+      itemArray[2] === itemArray[8] && 
       itemArray[2] !== "empty") {
         setWinMessage(`${itemArray[2]} won`)
-    } else if (itemArray[0] == itemArray[4] &&
-      itemArray[0] == itemArray[8] && 
+    } else if (itemArray[0] === itemArray[4] &&
+      itemArray[0] === itemArray[8] && 
       itemArray[0] !== "empty") {
         setWinMessage(`${itemArray[0]} won`)
-    } else if (itemArray[2] == itemArray[4] &&
-      itemArray[2] == itemArray[6] && 
+    } else if (itemArray[2] === itemArray[4] &&
+      itemArray[2] === itemArray[6] && 
       itemArray[2] !== "empty") {
         setWinMessage(`${itemArray[2]} won`)
-    } 
+    } else if (!itemArray.includes("empty")) {
+      setWinMessage(`Match is Draw!`);
+    }
   };
 
   const changeItem = (itemNumber) => {
@@ -81,17 +83,17 @@ const App = () => {
         <Col md={6} className="offset-md-3">
           {winMessage ? (
             <div className="mb-2 mt-2">
-              <h1 className="text-secondary text-uppercase text-center">
+              <h1 className="win-message">
                 {winMessage}
               </h1>
-              <Button color="success" block onClick={reloadGame}>Reload Game</Button>
+              <Button color="success" className="text-center" onClick={reloadGame}>Reload Game</Button>
             </div>
           ) : (
-            <h1 className="text-center text-warning">
+            <h1 className="turn-message">
               {isCross ? "Cross" : "Circle" } turns
             </h1>
           )}
-          <div className="grid">
+          <div className="grid mt-5">
             {itemArray.map((item, index) => (
               <Card onClick={ () => changeItem(index) } color="secondary">
                 <CardBody className="box">

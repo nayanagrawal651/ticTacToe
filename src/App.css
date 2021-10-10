@@ -17,3 +17,15 @@ body {
   font-size: 35px;
   color: #000;
 }
+.win-message {
+  text-transform: uppercase;
+  text-align: center;
+  color: #E8BD0D;
+  font-size: 40px;
+}
+.turn-message {
+  text-transform: uppercase;
+  text-align: center;
+  color: #CAD5E2;
+  font-size: 30px;
+}
